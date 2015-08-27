@@ -62,7 +62,7 @@ int tamP=0;
    b=(Barco*)malloc(1*sizeof(Barco));
    p=(Persona*)malloc(1*sizeof(Persona));
    
-while(opcion!=0)
+while(opcion!=5)
 {
 
 //printf("Direccion en main %p\n",p);
@@ -86,10 +86,7 @@ tamP++;
 	(*(menu3+opcion-1))(b, p, tamB, tamP);
 
 }//Cierre de while
-printf("---Opciones---\n1-Agregar Barco\n2-Agregar Persona\n3-Salir\n4-Copiar\nEscoge tu opción:  ");
 
-//free(p);
-//free(b);
 free(menu);
 free(menu2);
 free(menu3);
@@ -215,27 +212,6 @@ else //Cierre de else Principal
 printf("No hay ningun barco en el puerto...\n");
 }//Cierre de funcion relacionar
 
-/*
-int tamanioP(Persona *p)
-{
-Persona *aux2 =p;
-while((aux2)->rol!= '\0')
-aux2++;
-//printf("LLevo %d personas", aux2-p);
-return (aux2-p);
-
-}//Cierre de funcion tamanioP
-
-int tamanioB(Barco *b)
-{
-Barco *aux2 =b;
-while((aux2)->nombreB!= '\0')
-aux2++;
-
-return aux2-b;
-
-}//Cierre de funcion tamanioB
-*/
 
 void imprimir(Barco *b, int a)
 {
@@ -304,6 +280,5 @@ printf("Borre Personas %d veces\n", i);
 
 free(b);
 free(p);
-exit(0);
 }
 
