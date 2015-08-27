@@ -24,9 +24,6 @@ typedef struct{
 } Hospital;
 
 
-
-typedef void(* opcion_t) (Hospital *, int);
-typedef void(* opcion_t2) (Persona *, int);
 typedef void(* opcion_t3) (Hospital *, Persona *, int, int);
 
 void agregaP(Hospital *, Persona *, int, int);
@@ -42,8 +39,6 @@ void salir(Hospital *, Persona *, int, int);
 int main(int argc, const char * argv[])
 {
 
-	   opcion_t * menu=((opcion_t*) malloc(N * sizeof(opcion_t)));
-	   opcion_t2 * menu2=((opcion_t2*) malloc(N * sizeof(opcion_t2)));
 	   opcion_t3 * menu3=((opcion_t3*) malloc(N * sizeof(opcion_t3)));
 
 	int tamH=0;
@@ -54,14 +49,7 @@ int main(int argc, const char * argv[])
 	*(menu3+3)=imprimirCamas;
 	*(menu3+5)=imprimirPacientes;
 	*(menu3+6)=salir;
-	//*(menu+4)=imprimirTotalCamas;
-	
-	   /**(menu)=agregarBarco;
-	   *(menu2+1)=agregarPersona;
-	   *(menu3+2)=relacionar;
-	   *(menu3+3)=imprimir2;
-	   
-	*/
+
 	   int opcion=-1;
 	   int camas=5;
 		Persona *p;
@@ -70,7 +58,7 @@ int main(int argc, const char * argv[])
 	   h=(Hospital*)malloc(5*sizeof (Hospital));
 	   p=(Persona*)malloc(1*sizeof(Persona));
 	   
-	while(opcion!=0)
+	while(opcion!=7)
 	{
 
 	//printf("Direccion en main %p\n",p);
@@ -103,12 +91,7 @@ printf("El total de camas ocupadas es: %d\nEl total de camas libres es: %d\n", c
 	
 
 	}//Cierre de while
-	printf("---Opciones---\n1-Agregar Barco\n2-Agregar Persona\n3-Salir\n4-Copiar\nEscoge tu opción:  ");
-
-	free(h);
-	free(p);
-	//free(menu);
-	//free(menu2);
+	
 	free(menu3);
 
 	printf("\n");
@@ -322,7 +305,7 @@ void salir(Hospital *h, Persona *p, int a, int c)
 	free(h);
 	free(p);
 
-	exit(0);
+	//exit(0);
 
 }//Cierre de funcion salir
 
