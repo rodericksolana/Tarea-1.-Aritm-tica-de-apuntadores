@@ -7,8 +7,8 @@ Programación Avanzada*/
 #include <time.h>
 #define M 2 //Numero de personas
 #define N 7  //numero menu
-#define X 2 //numero de preguntas
-#define Y 3// numero de respuestas
+#define X 10 //numero de preguntas
+#define Y 6// numero de respuestas
 
 int i=0;
 typedef struct{
@@ -104,7 +104,7 @@ else if(opcion==7)
 
 	else if(par>0 && pre>0 && opcion==3)
 {
-	(*(menu3+opcion-1))(p, e, pr, M ,M, X);
+	(*(menu3+(opcion-1)))(p, e, pr, M ,M, X);
 }
 else
 printf("Necesitas agregar los Participantes o las Preguntas\n");
@@ -193,13 +193,14 @@ void agregarEncuesta(Persona *p, Encuesta *e, Preguntas *pr, int a, int b, int c
 	int i=0; int j=0;
 	for (i=0;i<b;++i)
 	{
-	(e+i)->participante = malloc(sizeof(char)*10);
+	(e+i)->participante = malloc(sizeof(Persona)*a);
 
 	*((e+i)->participante)= *(p+i);
+printf("\nParticipante: %s \n",((e+i)->participante->nombreP));
 for(j=0;j<X;++j)
 {
-(e+i)->respU = malloc(sizeof(int)*Y);
-	*((e+i)->respU+j)=rand() % 100;
+(e+i)->respU = malloc(sizeof(int)*X);
+	*((e+i)->respU+j)=rand() % Y;
 printf("Pregunta: %d R:%d\n",j+1,*((e+i)->respU+j));
 }
 	}
@@ -247,10 +248,12 @@ for (i=0;i<a;++i)
 	for(j=0; j<b;++j)
 {
 
-printf("Pregunta: %d  ", j+1);
+//printf("Pregunta: %d  ", j+1);
+
+printf("Resultados Encuesta:  Proximamente");
 for(k=0; k<c;++k)
 {
-printf("Respuesta: %d   ", k+1);
+//printf("Respuesta: %d   ", k+1);
 
 }//Cierre de  k Y
 
@@ -281,14 +284,19 @@ void salir(Persona *p, Encuesta *e, Preguntas *pr, Respuestas *resp, int a, int 
 	i=0;
 	for (aux=e; aux<final;++aux)
 	{
-
 	i++;
 		free(aux->participante);
 		aux->participante=NULL;
 		
-
 	}//Cierre de for
 	printf("Borre encuesta %d veces\n", i);
+
+	for (j=0; j<M;++j)
+	{
+		free((e+i)->participante);
+		(e+i)->participante=NULL;
+		
+	}//Cierre de for
 
 	i=0;
 	for (aux2 = p; aux2 < final2; ++aux2) {
@@ -318,6 +326,12 @@ void salir(Persona *p, Encuesta *e, Preguntas *pr, Respuestas *resp, int a, int 
 {
 free((e+i)->respU);
 }
+
+	for(j=0;j<Y;++j)
+{
+free((resp+j)->respuestas);
+}
+
 	printf("Borre Respuestas %d veces\n", i);
 	free(p);
 	free(e);
