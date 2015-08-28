@@ -97,7 +97,7 @@ void agregarBarco(Barco *b, int a)
 {
 	int aux=0;
 	
-	   (b+a)->nombreB = malloc(sizeof(char)*10); //asigno memoria al arreglo de la estructura
+	   (b+a)->nombreB = malloc(sizeof(char)*15); //asigno memoria al arreglo de la estructura
 	   printf("Dame el nombre: ");
            scanf("%s",(b+a)->nombreB);
 	   printf("Dame la eslora: ");
@@ -106,7 +106,6 @@ void agregarBarco(Barco *b, int a)
 	   scanf("%f",&(b+a)->manga);
 	   printf("Dame la capacidad max: ");
 	   (b+a)->propietario = malloc(sizeof(Persona)* 1);
-	   (b+a)->propietario->nombreP = malloc(sizeof(char)*10);
 	   scanf("%d",&(b+a)->nMax);
 	   aux=(b+a)->nMax;
 	   (b+a)->tripulacion = malloc(sizeof(Persona) * (aux));
@@ -117,16 +116,16 @@ void agregarBarco(Barco *b, int a)
 void agregarPersona(Persona *p, int a)
 {
 	
-	   (p+a)->nombreP = malloc(sizeof(char)*10); //asigno memoria al arreglo de la estructura
+	   (p+a)->nombreP = malloc(sizeof(char)*15); //asigno memoria al arreglo de la estructura
 	   printf("Dame el nombre: ");
        	   scanf("%s",(p+a)->nombreP);
-	   (p+a)->apellido = malloc(sizeof(char)*10);
+	   (p+a)->apellido = malloc(sizeof(char)*15);
 	   printf("Dame el apellido: ");
            scanf("%s",(p+a)->apellido);	  
 	   //(p+a)->edad = malloc(sizeof(int)*10);
       	   printf("Dame la edad: ");
       	   scanf("%d",&(p+a)->edad);
-	   (p+a)->rol = malloc(sizeof(char)*10);
+	   (p+a)->rol = malloc(sizeof(char)*15);
 	   printf("Dame el rol: ");
       	   scanf("%s",(p+a)->rol);
 }//Ciere de funcion agregaP
